@@ -65,7 +65,7 @@ const CampaignShow = ({
         color="teal"
         size="large"
       >
-        Show Requests
+        Go to Requests
       </Button>
     </Layout>
   );

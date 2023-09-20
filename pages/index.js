@@ -5,7 +5,7 @@ import factory from "../ethereum/factory";
 import Layout from "./components/Layout";
 import { useRouter } from "next/router";
 import Link from "next/link";
-
+// import "./index.css";
 function CampaignIndex({ campaigns }) {
   const router = useRouter();
   console.log("campaigns", campaigns);

@@ -174,7 +174,7 @@ const RequestIndex = ({
               color="pink"
               basic
               size="large"
-              disabled={Boolean(loading)}
+              disabled={Boolean(loading) || approvalCount < approversCount / 2}
               onClick={() => onFinalise(index)}
             >
               Finalise
