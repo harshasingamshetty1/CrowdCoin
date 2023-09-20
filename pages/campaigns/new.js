@@ -36,7 +36,7 @@ const CampaignNew = (props) => {
       })
       .then((res) => {
         console.log(res);
-        const etherscanLink = `https://rinkeby.etherscan.io/tx/${res.transactionHash}`;
+        const etherscanLink = `https://goerli.etherscan.io/tx/${res.transactionHash}`;
         setTransactionState({
           ...INITIAL_TRANSACTION_STATE,
           success: (
