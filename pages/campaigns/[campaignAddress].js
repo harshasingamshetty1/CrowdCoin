@@ -5,8 +5,6 @@ import web3 from "../../ethereum/web3";
 import ContributeForm from "../components/ContributeForm";
 import { Card, Button } from "semantic-ui-react";
 import { useRouter } from "next/router";
-import Link from "next/link";
-import { getSortedRoutes } from "next/dist/next-server/lib/router/utils";
 
 const CampaignShow = ({
   campaignAddress,
