@@ -5,7 +5,6 @@ import factory from "../ethereum/factory";
 import Layout from "./components/Layout";
 import { useRouter } from "next/router";
 import Link from "next/link";
-// import "./index.css";
 function CampaignIndex({ campaigns }) {
   const router = useRouter();
   console.log("campaigns", campaigns);
@@ -24,23 +23,25 @@ function CampaignIndex({ campaigns }) {
   });
 
   return (
-    <Layout>
-      <>
-        <h1>Campaigns</h1>
-        <Button
-          icon
-          floated="right"
-          color="teal"
-          size="large"
-          onClick={() => router.push("/campaigns/new")}
-          style={{ marginBottom: "20px" }}
-        >
-          <Icon name="add circle" />
-          {"   "}Create New Campaign
-        </Button>
-      </>
-      <Card.Group items={items} centered />
-    </Layout>
+    <div className="h-[100vh] bg-gradient-to-br from-gray-400 to-gray-800 ">
+      <Layout>
+        <>
+          <h1 className="">Campaigns</h1>
+          <Button
+            icon
+            floated="right"
+            color="teal"
+            size="large"
+            onClick={() => router.push("/campaigns/new")}
+            style={{ marginBottom: "20px" }}
+          >
+            <Icon name="add circle" />
+            {"   "}Create New Campaign
+          </Button>
+        </>
+        <Card.Group items={items} centered />
+      </Layout>
+    </div>
   );
 }
 
