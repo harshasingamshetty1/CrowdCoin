@@ -2,3 +2,5 @@ node_modules
 .next
 ADDRESS
 .DS_Store
+.env
+helpers

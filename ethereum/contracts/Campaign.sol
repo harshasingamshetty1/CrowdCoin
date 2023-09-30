@@ -1,12 +1,19 @@
+// SPDX-License-Identifier: MIT
 pragma solidity ^0.6.5;
 
 contract CampaignFactory {
     address[] public deployedCampaigns;
 
+    mapping(address => string) public campaignCause;
+
     // Deploys a new instance of a Campaign and stores the resulting address
-    function createCampaign(uint minimum) public {
-        address newCampaign = address(new Campaign(minimum, msg.sender));
+    function createCampaign(string memory cause, uint minimum) public {
+        address newCampaign = address(
+            new Campaign(cause, minimum, payable(msg.sender))
+        );
+
         deployedCampaigns.push(newCampaign);
+        campaignCause[newCampaign] = cause;
     }
 
     // Returns a list of all deployed campaigns
@@ -27,6 +34,7 @@ contract Campaign {
 
     Request[] public requests; // List of requests the manager has created
     address payable public manager;
+    string public campaignCause;
     uint public minimumContribution;
     // address[] public approvers; arrays aren't scalable - use mappings for O(1) lookups. Mappings need to be initialised to return an undefined value though
     mapping(address => bool) public approvers;
@@ -37,8 +45,13 @@ contract Campaign {
         _;
     }
 
-    constructor(uint minimum, address payable creator) public {
+    constructor(
+        string memory cause,
+        uint minimum,
+        address payable creator
+    ) public {
         manager = creator;
+        campaignCause = cause;
         minimumContribution = minimum;
     }
 
@@ -108,6 +121,7 @@ contract Campaign {
         public
         view
         returns (
+            string memory,
             uint,
             uint,
             uint,
@@ -116,6 +130,7 @@ contract Campaign {
         )
     {
         return (
+            campaignCause,
             minimumContribution,
             address(this).balance,
             requests.length,
