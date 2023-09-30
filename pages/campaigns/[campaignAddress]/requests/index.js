@@ -43,8 +43,9 @@ const RequestIndex = ({
         })
         .then((res) => {
           console.log(res);
-          const etherscanLink = `https://goerli.etherscan.io/tx/${res.transactionHash}`;
-          setTransactionState({
+          const etherscanLink = `https://mumbai.polygonscan.com/tx/${res.transactionHash}`;
+          //mumbai.polygonscan.com/tx/0xa901e0773d03cb7a166f9a6171efe46a995ec1ad50d82db01f494230a7654882
+          https: setTransactionState({
             ...INITIAL_TRANSACTION_STATE,
             success: (
               <a href={etherscanLink} target="_blank">
@@ -85,7 +86,7 @@ const RequestIndex = ({
         })
         .then((res) => {
           console.log(res);
-          const etherscanLink = `https://goerli.etherscan.io/tx/${res.transactionHash}`;
+          const etherscanLink = `https://mumbai.polygonscan.com/tx/${res.transactionHash}`;
           setTransactionState({
             ...INITIAL_TRANSACTION_STATE,
             success: (

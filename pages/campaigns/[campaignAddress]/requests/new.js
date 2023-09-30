@@ -46,7 +46,7 @@ const RequestNew = ({ campaignAddress }) => {
         })
         .then((res) => {
           console.log(res);
-          const etherscanLink = `https://goerli.etherscan.io/tx/${res.transactionHash}`;
+          const etherscanLink = `https://mumbai.polygonscan.com/tx/${res.transactionHash}`;
           setTransactionState({
             ...INITIAL_TRANSACTION_STATE,
             success: (

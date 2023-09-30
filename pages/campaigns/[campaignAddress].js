@@ -7,6 +7,7 @@ import { Card, Button } from "semantic-ui-react";
 import { useRouter } from "next/router";
 
 const CampaignShow = ({
+  campaignCause,
   campaignAddress,
   minimumContribution,
   balance,
@@ -55,7 +56,10 @@ const CampaignShow = ({
   return (
     <Layout>
       <h1>Campaign Details</h1>
-      <ContributeForm campaignAddress={campaignAddress} />
+      <ContributeForm
+        campaignAddress={campaignAddress}
+        campaignCause={campaignCause}
+      />
       <br />
       <Card.Group items={items}></Card.Group>
       <br />
@@ -79,12 +83,13 @@ CampaignShow.getInitialProps = async (props) => {
   const summary = await campaignDetails.methods.getSummary().call();
 
   return {
+    campaignCause: summary[0],
     campaignAddress: props.query.campaignAddress,
-    minimumContribution: summary[0],
-    balance: summary[1],
-    requestCount: summary[2],
-    approversCount: summary[3],
-    manager: summary[4],
+    minimumContribution: summary[1],
+    balance: summary[2],
+    requestCount: summary[3],
+    approversCount: summary[4],
+    manager: summary[5],
   };
 };
 

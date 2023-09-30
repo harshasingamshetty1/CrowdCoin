@@ -5,14 +5,14 @@ import factory from "../ethereum/factory";
 import Layout from "./components/Layout";
 import { useRouter } from "next/router";
 import Link from "next/link";
-function CampaignIndex({ campaigns }) {
+function CampaignIndex({ campaigns, campaignCauses }) {
   const router = useRouter();
   console.log("campaigns", campaigns);
 
-  const items = campaigns.map((campaignAddress) => {
+  const items = campaigns.map((campaignAddress, index) => {
     console.log(campaignAddress);
     return {
-      header: `Campaign Cause`,
+      header: `${campaignCauses[index]}`,
       // color: "",
       description: (
         <Link href={`/campaigns/${campaignAddress}`}>
@@ -44,10 +44,25 @@ function CampaignIndex({ campaigns }) {
   );
 }
 
-//uses server side rendering to call the campaign contracts (so good for slow devices)
 CampaignIndex.getInitialProps = async () => {
   const campaigns = await factory.methods.getDeployedCampaigns().call();
-  return { campaigns };
+  const campaignCauses = [];
+
+  if (campaigns.length > 0) {
+    // Use Promise.all to await all async calls
+    await Promise.all(
+      campaigns.map(async (campaignAddress) => {
+        const cause = await factory.methods
+          .campaignCause(campaignAddress)
+          .call();
+        console.log("the cause in loop = ", cause);
+        campaignCauses.push(cause);
+      })
+    );
+  }
+
+  console.log("cause =", campaignCauses);
+  return { campaigns, campaignCauses };
 };
 
 export default CampaignIndex;

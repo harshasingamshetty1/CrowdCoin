@@ -10,7 +10,7 @@ const INITIAL_TRANSACTION_STATE = {
   success: "",
 };
 
-const ContributeForm = ({ campaignAddress }) => {
+const ContributeForm = ({ campaignCause, campaignAddress }) => {
   console.log(campaignAddress);
   const router = useRouter();
   const [contribution, setContribution] = useState("");
@@ -37,7 +37,7 @@ const ContributeForm = ({ campaignAddress }) => {
         })
         .then((res) => {
           console.log(res);
-          const etherscanLink = `https://goerli.etherscan.io/tx/${res.transactionHash}`;
+          const etherscanLink = `https://mumbai.polygonscan.com/tx/${res.transactionHash}`;
           setTransactionState({
             ...INITIAL_TRANSACTION_STATE,
             success: (
@@ -88,7 +88,7 @@ const ContributeForm = ({ campaignAddress }) => {
     <>
       <Form onSubmit={onSubmit}>
         <Form.Field>
-          <label>{`Contribute to Campaign: ${campaignAddress}`}</label>
+          <label>{`Contribute to  ${campaignCause} Campaign: (${campaignAddress})`}</label>
           <Input
             label="ether"
             labelPosition="right"

@@ -30,14 +30,14 @@ const CampaignNew = (props) => {
     });
     const accounts = await web3.eth.getAccounts();
     await factory.methods
-      .createCampaign(minumumContribution)
+      .createCampaign(campaignCause, minumumContribution)
       .send({
         //no need to specify gas amount -metamask does this
         from: accounts[0],
       })
       .then((res) => {
         console.log(res);
-        const etherscanLink = `https://goerli.etherscan.io/tx/${res.transactionHash}`;
+        const etherscanLink = `https://mumbai.polygonscan.com/tx/${res.transactionHash}`;
         setTransactionState({
           ...INITIAL_TRANSACTION_STATE,
           success: (
@@ -89,7 +89,7 @@ const CampaignNew = (props) => {
             // focus
             type="string" // enforce number only content
             disabled={Boolean(loading)} //disable input if loading
-            value={minumumContribution}
+            value={campaignCause}
             onChange={(e) => setCampaignCause(e.target.value)}
           />
         </Form.Field>
