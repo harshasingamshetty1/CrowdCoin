@@ -12,10 +12,11 @@ function CampaignIndex({ campaigns }) {
   const items = campaigns.map((campaignAddress) => {
     console.log(campaignAddress);
     return {
-      header: campaignAddress,
+      header: `Campaign Cause`,
+      // color: "",
       description: (
         <Link href={`/campaigns/${campaignAddress}`}>
-          <a>View campaign</a>
+          <a>{`View campaign  (${campaignAddress})`}</a>
         </Link>
       ),
       fluid: true,
@@ -23,25 +24,23 @@ function CampaignIndex({ campaigns }) {
   });
 
   return (
-    <div className="h-[100vh] bg-gradient-to-br from-gray-400 to-gray-800 ">
-      <Layout>
-        <>
-          <h1 className="">Campaigns</h1>
-          <Button
-            icon
-            floated="right"
-            color="teal"
-            size="large"
-            onClick={() => router.push("/campaigns/new")}
-            style={{ marginBottom: "20px" }}
-          >
-            <Icon name="add circle" />
-            {"   "}Create New Campaign
-          </Button>
-        </>
-        <Card.Group items={items} centered />
-      </Layout>
-    </div>
+    <Layout>
+      <>
+        <h1 className="">Campaigns</h1>
+        <Button
+          icon
+          floated="right"
+          color="blue"
+          size="large"
+          onClick={() => router.push("/campaigns/new")}
+          style={{ marginBottom: "20px" }}
+        >
+          <Icon name="add circle" />
+          {"   "}Create New Campaign
+        </Button>
+      </>
+      <Card.Group items={items} centered />
+    </Layout>
   );
 }
 

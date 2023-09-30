@@ -102,7 +102,7 @@ const ContributeForm = ({ campaignAddress }) => {
             onChange={(e) => setContribution(e.target.value)}
           />
         </Form.Field>
-        <Button color="teal" disabled={Boolean(loading)} size="large">
+        <Button color="blue" disabled={Boolean(loading)} size="large">
           Contribute
         </Button>
       </Form>

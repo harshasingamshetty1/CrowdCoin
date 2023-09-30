@@ -15,6 +15,7 @@ const INITIAL_TRANSACTION_STATE = {
 const CampaignNew = (props) => {
   const router = useRouter();
   const [minumumContribution, setMinimumContribution] = useState("");
+  const [campaignCause, setCampaignCause] = useState("");
   const [transactionState, setTransactionState] = useState(
     INITIAL_TRANSACTION_STATE
   );
@@ -81,6 +82,18 @@ const CampaignNew = (props) => {
       <h1>Create a Campaign</h1>
       <Form onSubmit={onSubmit}>
         <Form.Field>
+          <label>Campaign Cause</label>
+          <Input
+            // label="wei"
+            // labelPosition="right"
+            // focus
+            type="string" // enforce number only content
+            disabled={Boolean(loading)} //disable input if loading
+            value={minumumContribution}
+            onChange={(e) => setCampaignCause(e.target.value)}
+          />
+        </Form.Field>
+        <Form.Field>
           <label>Minumum Contribution</label>
           <Input
             label="wei"
@@ -93,7 +106,7 @@ const CampaignNew = (props) => {
             onChange={(e) => setMinimumContribution(e.target.value)}
           />
         </Form.Field>
-        <Button color="teal" disabled={Boolean(loading)}>
+        <Button color="blue" disabled={Boolean(loading)}>
           Create!
         </Button>
       </Form>

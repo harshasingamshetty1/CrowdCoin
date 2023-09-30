@@ -45,6 +45,7 @@ const CampaignShow = ({
     },
     {
       header: "Number of Approvers",
+
       meta: approversCount,
       description:
         "The number of approvers that have already contributed to this campaign",
@@ -60,8 +61,11 @@ const CampaignShow = ({
       <br />
       <Button
         onClick={() => router.push(`/campaigns/${campaignAddress}/requests`)}
-        color="teal"
-        size="large"
+        color="blue"
+        // style={{ backgroundColor: "transparent", color: "rgb(0,100,255)" }}
+        size="tiny"
+        under
+        secondary
       >
         Go to Requests
       </Button>
