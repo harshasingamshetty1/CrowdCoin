@@ -193,7 +193,7 @@ const RequestIndex = ({
         onClick={() =>
           router.push(`/campaigns/${campaignAddress}/requests/new`)
         }
-        color="teal"
+        color="blue"
         size="large"
         floated="right"
         style={{ marginBottom: "20px" }}

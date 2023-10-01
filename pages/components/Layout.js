@@ -7,10 +7,10 @@ import Footer from "./Footer";
 //Hosts the top level layout of our app
 const Layout = (props) => {
   return (
-    <Container>
+    <Container className="relative ">
       <Header />
       {props.children}
-      {/* <Footer /> */}
+      <Footer />
     </Container>
   );
 };

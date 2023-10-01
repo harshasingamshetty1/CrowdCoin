@@ -1,8 +1,8 @@
 import React from "react";
 import "./index.css";
 
-function CryptoCares({ Component, pageProps }) {
+function CrowdCoin({ Component, pageProps }) {
   return <Component {...pageProps} />;
 }
 
-export default CryptoCares;
+export default CrowdCoin;

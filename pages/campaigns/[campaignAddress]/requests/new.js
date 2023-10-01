@@ -134,7 +134,7 @@ const RequestNew = ({ campaignAddress }) => {
             }
           />
         </Form.Field>
-        <Button disabled={Boolean(loading)} color="teal" size="large">
+        <Button disabled={Boolean(loading)} color="blue" size="large">
           Create Request
         </Button>
       </Form>

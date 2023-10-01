@@ -17,7 +17,7 @@ const CampaignList = ({ campaigns }) => {
       <h1>Campaigns</h1>
       <Card.Group items={items} centered />
       <div style={{ marginTop: "20px" }}>
-        <Button icon floated="right" color="teal" size="large">
+        <Button icon floated="right" color="blue" size="large">
           <Icon name="add circle" />
           {"   "}Create New Campaign
         </Button>
